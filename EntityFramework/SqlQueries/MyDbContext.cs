@@ -1,11 +1,10 @@
-﻿namespace EntityFramework.TPH {
-    using EntityFramework.TPH.Configurations.Converters;
-    using EntityFramework.TPH.Types;
+﻿namespace EntityFramework.SqlQueries {
+    using EntityFramework.SqlQueries.Entities;
     using Microsoft.EntityFrameworkCore;
 
-    public class MyDbContext : DbContext {
-        public MyDbContext(DbContextOptions options) : base(options) {
-        }
+    public class MyDbContext(DbContextOptions options) : DbContext(options) {
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
@@ -15,11 +14,6 @@
 
         protected sealed override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) {
             base.ConfigureConventions(configurationBuilder);
-
-            configurationBuilder
-                .Properties<EntityTypeId>()
-                .HaveMaxLength(5).AreFixedLength(true).AreUnicode(false)
-                .HaveConversion<EntityTypeIdConverter>();
 
             configurationBuilder
                 .Properties<DateTime>()
