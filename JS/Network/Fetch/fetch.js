@@ -6,10 +6,12 @@ fetch(url)
     .then(json => alert(json.items[0].name));
 
 // secondName
-async function SecondName() {
-    let response = await fetch(url)
-    let json = await response.json();
-    alert(json.items[1].name);
-}
-
-SecondName();
+(async () => {
+    try {
+        let response = await fetch(url)
+        let json = await response.json();
+        alert(json.items[1].name);
+    } catch(err) {
+        console.log(err);
+    }
+})();
