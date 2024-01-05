@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "d:\\GIT\\GITHub\\Moje\\Samples\\JS\\Network\\Fetch\\index.html",
+            "file": ".\\Network\\index.html",
             "runtimeArgs": ["--disable-web-security"]
         }
     ]

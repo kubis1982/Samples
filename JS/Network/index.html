@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Strona</title>
+        <script>
+            let url = new URL("http://localhost:3001/contractors");
+
+            async function ShowFirstName() {
+                try {
+                    let response = await fetch(url);
+                    let contractors = await response.json();
+                    alert(contractors.items[0].name);
+                }    
+                catch (error) {
+                    alert(error);
+                }                
+            }
+
+            async function ShowLastName() {
+                try {
+                    let response = await fetch(url);
+                    let contractors = await response.json();
+                    alert(contractors.items[contractors.count - 1].name);
+                }    
+                catch (error) {
+                    alert(error);
+                }                
+            }
+
+            async function CountContractors() {
+                try {
+                    let response = await fetch(url);
+                    let contractors = await response.json();
+                    alert(contractors.count);
+                }    
+                catch (error) {
+                    alert(error);
+                }                
+            }
+
+            async function CreateContractor() {
+                try {
+                    let name = prompt("Nazwa");
+                    let data = { name: name, firstName: "Mariusz", age: 36 };
+                    let body = JSON.stringify(data);
+                    let response = await fetch(url, { method: "POST", body: body, headers: new Headers({"Content-Type": "application/json"}) });
+                    if (response.status == 200) {
+                        alert('dodano');
+                    }
+                }    
+                catch (error) {
+                    alert(error);
+                }                
+            }
+        </script>
+    </head>    
+    <body>
+        <button onclick="ShowFirstName()">GET "Nazwa pierwszego kontrahenta"</button>
+        <button onclick="ShowLastName()">GET "Nazwa ostatniego kontrahenta"</button>
+        <button onclick="CreateContractor()">POST Dodanie kontrahenta</button>
+        <button onclick="CountContractors()">Ilość kontrahentów</button>
+    </body>
+</html>
