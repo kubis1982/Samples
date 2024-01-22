@@ -38,9 +38,6 @@ namespace EntityFramework_Postgress_LTREE.Migrations
                         .IsRequired()
                         .HasColumnType("ltree");
 
-                    b.Property<LTree>("Node")
-                        .HasColumnType("ltree");
-
                     b.HasKey("Id");
 
                     b.ToTable("LTreeModels");

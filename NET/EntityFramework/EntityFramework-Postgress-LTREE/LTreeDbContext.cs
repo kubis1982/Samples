@@ -9,13 +9,5 @@
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(LTreeModel).Assembly);
         }
-
-        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) {
-            base.ConfigureConventions(configurationBuilder);
-
-            configurationBuilder
-               .Properties<HierarchyNode>()
-               .HaveConversion<HierarchyNodeConverter>();
-        }
     }
 }

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EntityFramework_Postgress_LTREE.Migrations
 {
     [DbContext(typeof(LTreeDbContext))]
-    [Migration("20240122133653_InitialDb")]
+    [Migration("20240122143503_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -39,9 +39,6 @@ namespace EntityFramework_Postgress_LTREE.Migrations
 
                     b.Property<string>("LTree")
                         .IsRequired()
-                        .HasColumnType("ltree");
-
-                    b.Property<LTree>("Node")
                         .HasColumnType("ltree");
 
                     b.HasKey("Id");

@@ -21,8 +21,7 @@ namespace EntityFramework_Postgress_LTREE.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Code = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: true),
-                    LTree = table.Column<string>(type: "ltree", nullable: false),
-                    Node = table.Column<string>(type: "ltree", nullable: false)
+                    LTree = table.Column<string>(type: "ltree", nullable: false)
                 },
                 constraints: table =>
                 {
