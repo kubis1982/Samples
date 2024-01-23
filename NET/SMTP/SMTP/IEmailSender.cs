@@ -1,11 +1,13 @@
 ﻿namespace SMTP {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Threading;
 
     internal interface IEmailSender {
-        Task SendEmailAsync(string email, string subject, string message);
+        IEmailSender Attachment(string fileName, byte[] data);
+        IEmailSender Bcc(string name, string address);
+        IEmailSender Body(string body);
+        IEmailSender Cc(string name, string address);
+        string Send(CancellationToken cancellationToken = default);
+        IEmailSender Subject(string subject);
+        IEmailSender To(string name, string address);
     }
 }

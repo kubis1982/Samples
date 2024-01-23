@@ -18,8 +18,13 @@ EmailSenderOptions emailSenderOptions = new();
 
 configuration.GetSection("EmailSender").Bind(emailSenderOptions);
 
-var emailSender = new EmailSender(emailSenderOptions);
-await emailSender.SendEmailAsync("mariusz.swiatnicki@gmail.com", "Subject", "Próba1");
+string result = new EmailSender(emailSenderOptions)
+    .Body("<p>Hej</p><p>Próba generalna :)</p>")
+    .Subject("Takie se")
+    .To("Ludek", "PrzykładowyMail")
+    .Attachment("Plik PNG.png", File.ReadAllBytes("Test.png"))
+    .Attachment("Plik PDF.pdf", File.ReadAllBytes("PDF.pdf"))
+    .Send();
 
 Console.WriteLine("Hello, World!");
 
