@@ -1,5 +1,5 @@
 ﻿namespace EntityFramework.Sqlite.Entities {
-    public class File {
+    public class ExampleData {
         public int Id { get; set; }
         public string? Name { get; set; }
     }

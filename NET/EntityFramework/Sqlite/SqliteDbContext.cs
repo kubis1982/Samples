@@ -5,7 +5,7 @@
     using System.Reflection;
 
     public class SqliteDbContext(DbContextOptions<SqliteDbContext> dbContextOptions) : DbContext(dbContextOptions) {
-        public virtual DbSet<File> Files { get; set; }
+        public virtual DbSet<ExampleData> ExampleDatas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

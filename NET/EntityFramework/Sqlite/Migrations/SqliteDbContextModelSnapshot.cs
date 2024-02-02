@@ -16,7 +16,7 @@ namespace EntityFramework.Sqlite.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
 
-            modelBuilder.Entity("EntityFramework.Sqlite.Entities.File", b =>
+            modelBuilder.Entity("EntityFramework.Sqlite.Entities.ExampleData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -28,7 +28,7 @@ namespace EntityFramework.Sqlite.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Files");
+                    b.ToTable("ExampleDatas");
                 });
 #pragma warning restore 612, 618
         }
