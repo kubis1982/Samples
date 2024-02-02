@@ -5,5 +5,5 @@ Accept: application/json
 
 ###
 
-GET {{OData_HostAddress}}/example/
+GET {{OData_HostAddress}}/example?$filter=ideq1
 Accept: application/json
