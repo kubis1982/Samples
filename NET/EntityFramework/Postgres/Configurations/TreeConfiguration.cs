@@ -1,9 +1,10 @@
-﻿namespace EntityFramework_Postgress_LTREE {
+﻿namespace EntityFramework.Postgres.Configurations {
+    using EntityFramework.Postgres.Entities;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    internal class LTreeConfiguration : IEntityTypeConfiguration<LTreeModel> {
-        public void Configure(EntityTypeBuilder<LTreeModel> builder) {
+    internal class TreeConfiguration : IEntityTypeConfiguration<Tree> {
+        public void Configure(EntityTypeBuilder<Tree> builder) {
             builder.Property(n => n.Id);
 
             builder.Property(n => n.Code).HasMaxLength(40);

@@ -21,7 +21,8 @@ configuration.GetSection("EmailSender").Bind(emailSenderOptions);
 string result = new EmailSender(emailSenderOptions)
     .Body("<p>Hej</p><p>Próba generalna :)</p>")
     .Subject("Takie se")
-    .To("Ludek", "PrzykładowyMail")
+    .To("Ludek", "m.swiatnicki@7technology.pl")
+    .To("Ludek", "mariusz.swiatnicki@gmail.com")
     .Attachment("Plik PNG.png", File.ReadAllBytes("Test.png"))
     .Attachment("Plik PDF.pdf", File.ReadAllBytes("PDF.pdf"))
     .Send();

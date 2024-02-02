@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace EntityFramework_Postgress_LTREE.Migrations
+namespace EntityFramework.Postgres.Migrations
 {
     /// <inheritdoc />
     public partial class InitialDb : Migration
@@ -15,7 +15,7 @@ namespace EntityFramework_Postgress_LTREE.Migrations
                 .Annotation("Npgsql:PostgresExtension:ltree", ",,");
 
             migrationBuilder.CreateTable(
-                name: "LTreeModels",
+                name: "LTrees",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -25,7 +25,7 @@ namespace EntityFramework_Postgress_LTREE.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LTreeModels", x => x.Id);
+                    table.PrimaryKey("PK_LTrees", x => x.Id);
                 });
         }
 
@@ -33,7 +33,7 @@ namespace EntityFramework_Postgress_LTREE.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LTreeModels");
+                name: "LTrees");
         }
     }
 }
