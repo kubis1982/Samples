@@ -1,14 +1,13 @@
 using EntityFramework.Sqlite;
-using EntityFramework.Sqlite.Entities;
 using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
-using System.Drawing;
+using OData.Controllers.Model;
 
 static IEdmModel GetEdmModel() {
     ODataConventionModelBuilder builder = new();
-    builder.EntitySet<ExampleData>("ExampleDatas");
+    builder.EntitySet<ExampleModel>("ExampleModel");
     return builder.GetEdmModel();
 }
 
@@ -30,16 +29,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton(n => {
-    var db = new SqliteDbContextFactory().CreateDbContext([]);
-    if (db.ExampleDatas.Any()) {
-        return db;
-    }
-    db.Database.Migrate();
-    db.Add(new ExampleData { Name = "Nazwa1" });
-    db.Add(new ExampleData { Name = "Nazwa2" });
-    db.Add(new ExampleData { Name = "Nazwa3" });
-    db.Add(new ExampleData { Name = "Nazwa4" });
-    db.SaveChanges();
+    var db = new SqliteDbContextFactory().CreateDbContext([]);  
+    db.Database.Migrate();  
     return db;
 });
 

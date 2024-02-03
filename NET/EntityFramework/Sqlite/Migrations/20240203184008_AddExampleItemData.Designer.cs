@@ -2,6 +2,7 @@
 using EntityFramework.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFramework.Sqlite.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    partial class SqliteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240203184008_AddExampleItemData")]
+    partial class AddExampleItemData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
@@ -29,28 +32,6 @@ namespace EntityFramework.Sqlite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExampleDatas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Nazwa1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Nazwa2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Nazwa3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Nazwa4"
-                        });
                 });
 
             modelBuilder.Entity("EntityFramework.Sqlite.Entities.ExampleItemData", b =>
@@ -70,21 +51,7 @@ namespace EntityFramework.Sqlite.Migrations
 
                     b.HasIndex("ExampleId");
 
-                    b.ToTable("ExampleItemDatas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ExampleId = 1,
-                            Name = "Nazwa1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ExampleId = 4,
-                            Name = "Nazwa4"
-                        });
+                    b.ToTable("ExampleItemData");
                 });
 
             modelBuilder.Entity("EntityFramework.Sqlite.Entities.ExampleItemData", b =>

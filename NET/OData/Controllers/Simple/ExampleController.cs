@@ -3,7 +3,7 @@ using EntityFramework.Sqlite.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
-namespace OData.Controllers;
+namespace OData.Controllers.Simple;
 
 [ApiController]
 [Route("[controller]")]
