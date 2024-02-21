@@ -51,6 +51,47 @@
                     alert(error);
                 }                
             }
+
+            async function SSE() {
+                try {                    
+                    let ticket = new EventSource("http://localhost:3001/event-source");
+                    ticket.addEventListener("event1", event => {
+                        let p = document.getElementById("info");
+                        let p1 = document.createElement("p");
+                        p1.append(event.target);
+                        p1.append(event.data);
+
+                        p.append(p1)
+                    });
+                    ticket.onmessage = (event) => {
+                        //obsługa
+                    }
+                }    
+                catch (error) {
+                    alert(error);
+                } 
+            }
+
+            async function SSE_NET() {
+                try {
+                    let d = await fetch("http://localhost:5118/event-source");
+                    let ticket = new EventSource("http://localhost:5118/event-source");
+                    ticket.addEventListener("event1", event => {
+                        let p = document.getElementById("info");
+                        let p1 = document.createElement("p");
+                        p1.append(event.target);
+                        p1.append(event.data);
+
+                        p.append(p1)
+                    });
+                    ticket.onmessage = (event) => {
+                        //obsługa
+                    }
+                }    
+                catch (error) {
+                    alert(error);
+                } 
+            }
         </script>
     </head>    
     <body>
@@ -58,5 +99,8 @@
         <button onclick="ShowLastName()">GET "Nazwa ostatniego kontrahenta"</button>
         <button onclick="CreateContractor()">POST Dodanie kontrahenta</button>
         <button onclick="CountContractors()">Ilość kontrahentów</button>
+        <button onclick="SSE()">SSE</button>
+        <button onclick="SSE_NET()">SSE_NET</button>
+        <p id="info"></p>
     </body>
 </html>

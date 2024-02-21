@@ -30,4 +30,23 @@ app.post('/contractors', (req, res) => {
     res.send();
 });
 
+app.get('/event-source', (req, res) => {
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': '*'
+    });
+    res.flushHeaders();
+
+    let i = 0;
+    setInterval(()=>{
+        res.write(`id: ${i}\n`);
+        res.write(`event: event1\n`);
+        res.write(`data: Message -- ${Date.now()}`);
+        res.write(`\n\n`);
+        i++
+    }, 5000)
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}! http://localhost:${port}/`));
