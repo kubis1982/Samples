@@ -1,7 +1,11 @@
 ﻿namespace EntityFramework.Postgres {
+    using Dapper;
+    using EntityFramework.Postgres.Entities;
     using Microsoft.EntityFrameworkCore;
+    using System;
 
-    internal class PostgresTests {
+    public class PostgresTests {
+        [Fact]
         public void LTreeTest() {
             PostgresDbContextFactory dbContextFactory = new();
             var db = dbContextFactory.CreateDbContext([]);
