@@ -4,6 +4,7 @@
 
     public class PostgresDbContext(DbContextOptions<PostgresDbContext> dbContextOptions) : DbContext(dbContextOptions) {
         public virtual DbSet<Tree> LTrees { get; set; }
+        public virtual DbSet<Collection> Collections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
